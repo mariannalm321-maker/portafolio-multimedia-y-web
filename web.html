@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desarrollo Web & Código | Mariana</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Ajuste exclusivo para equilibrar los 3 proyectos en 2 columnas y centrar el tercero */
+        @media (min-width: 769px) {
+            .projects__grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .project-card:nth-child(3) {
+                grid-column: 1 / -1;
+                max-width: 600px;
+                margin: 0 auto;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- BOTÓN FLOTANTE WHATSAPP -->
+    <a href="https://wa.me/573235298686" class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- HEADER / BOTÓN DE VOLVER -->
+    <header class="container" style="padding-top: 30px;">
+        <a href="index.html" class="btn btn--primary" style="width: auto; display: inline-block;">
+            <i class="fa-solid fa-arrow-left"></i> Volver al inicio
+        </a>
+    </header>
+
+    <!-- SECCIÓN PRINCIPAL (HERO) -->
+    <section class="hero animate-fade-up" style="min-height: 50vh;">
+        <div class="hero__text">
+            <span class="hero__greeting">Desarrolladora Front-End</span>
+            <h1 class="hero__title">Páginas Web que Transforman Ideas</h1>
+            <p class="hero__subtitle">Construyo experiencias digitales interactivas, funcionales y atractivas que conectan con cada usuario.</p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: MIS HERRAMIENTAS -->
+    <section class="section-padding container">
+        <h2 class="section-title text-center animate-fade-up">Mis Herramientas de Desarrollo</h2>
+        <div class="tools-grid-custom animate-fade-up">
+            <div class="tool-card-vino">
+                <i class="fa-brands fa-html5"></i>
+                <h4>HTML</h4>
+            </div>
+            <div class="tool-card-vino">
+                <i class="fa-brands fa-css3-alt"></i>
+                <h4>CSS</h4>
+            </div>
+            <div class="tool-card-vino">
+                <i class="fa-brands fa-js"></i>
+                <h4>JavaScript</h4>
+            </div>
+            <div class="tool-card-vino">
+                <i class="fa-solid fa-code"></i>
+                <h4>VS Code</h4>
+            </div>
+            <div class="tool-card-vino">
+                <i class="fa-brands fa-figma"></i>
+                <h4>Figma</h4>
+            </div>
+            <div class="tool-card-vino">
+                <i class="fa-brands fa-github"></i>
+                <h4>GitHub</h4>
+            </div>
+            <div class="tool-card-vino">
+                <i class="fa-solid fa-wand-magic-sparkles"></i>
+                <h4>IA Tools</h4>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: PROYECTOS WEB -->
+    <section class="section-padding container">
+        <h2 class="section-title text-center animate-fade-up">Proyectos Web Destacados</h2>
+        <div class="projects__grid">
+            
+            <!-- PROYECTO 1: CAFETERÍA LOCAL MODERNA -->
+            <article class="project-card animate-fade-up">
+                <div class="project-card__preview">
+                    <img src="img/cafeteria.jpg" alt="Cafetería Local Moderna" class="project-card__img-contain">
+                </div>
+                <div class="project-card__content">
+                    <h3>Cafetería Local Moderna</h3>
+                    <p>Diseño de sitio web acogedor y estilizado, 100% centrado en la experiencia del usuario. Desarrollado en WordPress con Elementor, cuenta con menú interactivo, sistema de reserva de espacios y módulo de e-commerce para pedidos en línea. Optimizado para móviles, con alojamiento gratuito y carga rápida. Una fusión entre calidez local y estética moderna.</p>
+                    <div class="project-card__tools">
+                        <i class="fa-brands fa-html5"></i>
+                        <i class="fa-brands fa-css3-alt"></i>
+                        <i class="fa-brands fa-js"></i>
+                    </div>
+                    <a href="https://mariana-portafolio.kesug.com/?i=1" target="_blank" class="btn btn--primary">Ver Sitio</a>
+                </div>
+            </article>
+
+            <!-- PROYECTO 2: TIENDA DE ROPA -->
+            <article class="project-card animate-fade-up">
+                <div class="project-card__preview">
+                    <img src="img/tienda-ropa.jpg" alt="Tienda de Ropa" class="project-card__img-contain">
+                </div>
+                <div class="project-card__content">
+                    <h3>Tienda de Ropa</h3>
+                    <p>E-commerce dinámico y visual codificado desde cero en Visual Studio Code con HTML5, CSS3 y JavaScript. Cuenta con catálogo visual de productos, categorías organizadas, filtros por colección y diseño totalmente adaptable (responsive). Integra carrito de compras con checkout directo a WhatsApp para cerrar ventas al instante, animaciones suaves y optimización de velocidad para una experiencia de compra fluida y moderna.</p>
+                    <div class="project-card__tools">
+                        <i class="fa-brands fa-html5"></i>
+                        <i class="fa-brands fa-css3-alt"></i>
+                        <i class="fa-brands fa-js"></i>
+                    </div>
+                    <a href="https://dulcet-piroshki-5d89a2.netlify.app/" target="_blank" class="btn btn--primary">Ver Sitio</a>
+                </div>
+            </article>
+
+            <!-- PROYECTO 3: ACADEMIA VIRTUAL / DESARROLLO PERSONAL -->
+            <article class="project-card animate-fade-up">
+                <div class="project-card__preview">
+                    <img src="img/academia.jpg" alt="Academia Virtual" class="project-card__img-contain">
+                </div>
+                <div class="project-card__content">
+                    <h3>Academia Virtual (Desarrollo Personal)</h3>
+                    <p>Plataforma educativa inspiradora enfocada en crecimiento personal y bienestar. Desarrollada 100% en WordPress con identidad de marca sólida y arquitectura completa: Inicio, Cursos, Clase Gratis, Sobre Nosotros y Contacto. Integra recursos de bienestar y contacto directo vía WhatsApp, optimizada para guiar al usuario hacia la inscripción.</p>
+                    <div class="project-card__tools">
+                        <i class="fa-brands fa-html5"></i>
+                        <i class="fa-brands fa-css3-alt"></i>
+                        <i class="fa-brands fa-js"></i>
+                    </div>
+                    <a href="https://concienciaexpandidacursos.wordpress.com/" target="_blank" class="btn btn--primary">Ver Sitio</a>
+                </div>
+            </article>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <section class="section-padding container text-center animate-fade-up">
+        <div class="contact-box">
+            <h2 class="contact__title">¿Tienes un proyecto en mente?</h2>
+            <p class="contact__text">Hablemos y hagamos realidad esa página web que necesitas para destacar en el mundo digital.</p>
+            <a href="https://wa.me/573235298686" class="btn btn--whatsapp" target="_blank">
+                <i class="fab fa-whatsapp"></i> Escríbeme por WhatsApp
+            </a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Mariana. Todos los derechos reservados.</p>
+        </div>
+    </section>
+
+    <!-- SCRIPT DE ANIMACIONES -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const observerOptions = { root: null, rootMargin: '0px', threshold: 0.1 };
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('show');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+            document.querySelectorAll('.animate-fade-up, .animate-slide-left, .animate-fade-in').forEach(el => observer.observe(el));
+        });
+    </script>
+</body>
+</html>

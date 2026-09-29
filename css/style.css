@@ -1,0 +1,774 @@
+:root {
+    /* Colores */
+    --color-bg: #fbcfe8;          /* Rosa oscuro/base para el fondo de la página */
+    --color-bg-card: #fce7f3;     /* Rosa clarito para las tarjetas y contenedores */
+    --color-text-dark: #1e1b4b;
+    --color-text-muted: #4b5563;
+    --color-accent: #930500;      /* Vino tinto para botones y carrusel */
+    
+    --fuente-titles: 'Montserrat', sans-serif;
+    --fuente-body: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-body);
+    background-color: var(--color-bg);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.text-center { text-align: center; }
+.section-padding { padding: 70px 0; }
+
+h1, h2, h3, h4 {
+    font-family: var(--fuente-titles);
+    font-weight: 800;
+}
+
+.section-title {
+    font-size: 2.3rem;
+    margin-bottom: 40px;
+    color: var(--color-text-dark);
+}
+
+/* --- BOTONES UNIFICADOS Y FORZADOS A 100% DE ANCHO --- */
+.btn {
+    display: block; /* Obliga a que ocupe todo el ancho disponible por igual */
+    width: 100%;    /* Garantiza que en celular y PC midan exactamente lo mismo */
+    padding: 15px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1.05rem;
+    text-align: center;
+}
+
+.btn--primary {
+    background-color: var(--color-accent);
+    color: #ffffff;
+}
+
+.btn--whatsapp {
+    background-color: var(--color-accent);
+    color: #ffffff;
+    padding: 15px 35px;
+    margin-top: 15px;
+    width: auto; /* El de whatsapp sí puede ser automático al centro */
+    display: inline-block;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+    box-shadow: 0 5px 15px rgba(147, 5, 0, 0.4);
+}
+
+/* --- 1. SECCIÓN HERO (AVATARES DIAGONALES) --- */
+.hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero__text {
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hero__greeting {
+    display: block;
+    color: var(--color-accent);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.hero__title {
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.hero__subtitle {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Avatares */
+.hero__avatar {
+    position: absolute;
+    bottom: -30px; 
+    width: 280px;  
+    z-index: 10;
+}
+
+.hero__avatar--left {
+    left: -40px;
+    transform: rotate(20deg);
+}
+
+.hero__avatar--right {
+    right: -40px;
+    transform: rotate(-20deg);
+}
+
+@media (max-width: 768px) {
+    .hero__avatar { 
+        display: none !important; 
+    }
+    .hero { min-height: 75vh; }
+    
+    /* Título más pequeño en celular */
+    .hero__title {
+        font-size: 1.8rem; 
+        margin-bottom: 20px;
+    }
+}
+
+/* --- 2. CARRUSELES --- */
+.marquee {
+    background-color: var(--color-accent);
+    color: #ffffff;
+    padding: 22px 0; 
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee__inner {
+    display: inline-block;
+    animation: marqueeAnimation 30s linear infinite;
+}
+
+.marquee__inner span { 
+    padding: 0 20px; 
+    font-size: 1.2rem; 
+    font-weight: 600;
+}
+
+@keyframes marqueeAnimation {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* --- 3. SOBRE MÍ --- */
+.about__container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.about__img-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.about__main-img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.about__content {
+    flex: 1.5;
+}
+
+.about__content p {
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .about__container { flex-direction: column; text-align: center; }
+}
+
+/* --- 4. PORTAFOLIO (CONTENEDORES Y BOTONES UNIFORMES) --- */
+.projects__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: stretch; /* Hace que ambas tarjetas midan exactamente lo mismo de alto */
+}
+
+.project-card {
+    background-color: var(--color-bg-card); 
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column; /* Permite estructurar los elementos internos en columna */
+}
+
+/* Contenedor unificado con proporción fija para que midan igual */
+.project-card__preview {
+    width: 100%;
+    aspect-ratio: 16/9; /* Fija una proporción idéntica para los dos contenedores */
+    background-color: var(--color-bg-card); /* Del mismo color de la tarjeta para fundirse si sobra espacio */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Usamos cover para que cubran todo el cuadro sin dejar espacios vacíos feos */
+.project-card__img, .project-card__video { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+
+.project-card__content { 
+    padding: 30px; 
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Hace que el contenido ocupe todo el espacio sobrante de la tarjeta */
+}
+
+.project-card__content h3 { font-size: 1.5rem; margin-bottom: 10px; }
+.project-card__content p { color: var(--color-text-muted); margin-bottom: 20px; }
+
+.project-card__tools {
+    font-size: 1.8rem;
+    color: var(--color-accent);
+    margin-bottom: 25px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+/* Empuja el botón exactamente al fondo de la tarjeta para que queden alineados */
+.project-card__content .btn {
+    margin-top: auto; 
+}
+
+@media (max-width: 768px) {
+    .projects__grid { grid-template-columns: 1fr; }
+}
+
+/* --- 5. VALOR AGREGADO --- */
+.value__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.value-card {
+    background-color: var(--color-bg-card); 
+    padding: 35px 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.value-card i {
+    font-size: 2.8rem;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+}
+
+.value-card h4 { font-size: 1.25rem; margin-bottom: 15px; }
+
+@media (max-width: 768px) {
+    .value__grid { grid-template-columns: 1fr; }
+}
+
+/* --- 6. FOOTER --- */
+.contact__title { font-size: 2.2rem; margin-bottom: 15px; }
+.contact__text { font-size: 1.15rem; margin-bottom: 30px; color: var(--color-text-muted); max-width: 700px; margin-left: auto; margin-right: auto; }
+
+.footer-bottom {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-weight: 600;
+}
+
+/* --- SISTEMA DE ANIMACIONES DE SCROLL --- */
+.animate-fade-up, .animate-slide-left, .animate-fade-in {
+    opacity: 0;
+    visibility: hidden;
+    will-change: transform, opacity;
+}
+
+.animate-fade-up {
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-slide-left {
+    transform: translateX(-50px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-fade-in {
+    transform: scale(0.95);
+    transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+/* Clases activas inyectadas por JS */
+.animate-fade-up.show, .animate-slide-left.show, .animate-fade-in.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(0, 0) scale(1) rotate(0deg); 
+}
+
+/* Restaurar rotación de avatares tras animación */
+.hero__avatar--left.show { transform: rotate(20deg); }
+.hero__avatar--right.show { transform: rotate(-20deg); }
+
+:root {
+    /* Colores */
+    --color-bg: #fbcfe8;          /* Rosa oscuro/base para el fondo de la página */
+    --color-bg-card: #fce7f3;     /* Rosa clarito para las tarjetas y contenedores */
+    --color-text-dark: #1e1b4b;
+    --color-text-muted: #4b5563;
+    --color-accent: #930500;      /* Vino tinto para botones y carrusel */
+    
+    --fuente-titles: 'Montserrat', sans-serif;
+    --fuente-body: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-body);
+    background-color: var(--color-bg);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 25px; /* Ajustado a 25px para dar buen margen en celular */
+}
+
+.text-center { text-align: center; }
+.section-padding { padding: 70px 0; }
+
+h1, h2, h3, h4 {
+    font-family: var(--fuente-titles);
+    font-weight: 800;
+}
+
+.section-title {
+    font-size: 2.3rem;
+    margin-bottom: 40px;
+    color: var(--color-text-dark);
+}
+
+/* --- BOTONES UNIFICADOS Y FORZADOS A 100% DE ANCHO --- */
+.btn {
+    display: block; 
+    width: 100%;    
+    padding: 15px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    font-size: 1.05rem;
+    text-align: center;
+}
+
+.btn--primary {
+    background-color: var(--color-accent);
+    color: #ffffff;
+}
+
+.btn--whatsapp {
+    background-color: var(--color-accent);
+    color: #ffffff;
+    padding: 15px 35px;
+    margin-top: 15px;
+    width: auto; 
+    display: inline-block;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    opacity: 0.9;
+    box-shadow: 0 5px 15px rgba(147, 5, 0, 0.4);
+}
+
+/* --- 1. SECCIÓN HERO (AVATARES DIAGONALES) --- */
+.hero {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero__text {
+    z-index: 2;
+    max-width: 800px;
+}
+
+.hero__greeting {
+    display: block;
+    color: var(--color-accent);
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.hero__title {
+    font-size: clamp(2.2rem, 4vw, 3.8rem);
+    line-height: 1.1;
+    margin-bottom: 25px;
+}
+
+.hero__subtitle {
+    font-size: 1.15rem;
+    color: var(--color-text-muted);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.hero__avatar {
+    position: absolute;
+    bottom: -30px; 
+    width: 280px;  
+    z-index: 10;
+}
+
+.hero__avatar--left {
+    left: -40px;
+    transform: rotate(20deg);
+}
+
+.hero__avatar--right {
+    right: -40px;
+    transform: rotate(-20deg);
+}
+
+@media (max-width: 768px) {
+    .hero__avatar { display: none !important; }
+    .hero { min-height: 75vh; }
+    .hero__title { font-size: 1.8rem; margin-bottom: 20px; }
+}
+
+/* --- 2. CARRUSELES --- */
+.marquee {
+    background-color: var(--color-accent);
+    color: #ffffff;
+    padding: 22px 0; 
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.marquee__inner {
+    display: inline-block;
+    animation: marqueeAnimation 30s linear infinite;
+}
+
+.marquee__inner span { 
+    padding: 0 20px; 
+    font-size: 1.2rem; 
+    font-weight: 600;
+}
+
+@keyframes marqueeAnimation {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+
+/* --- 3. SOBRE MÍ --- */
+.about__container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.about__img-wrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.about__main-img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+.about__content {
+    flex: 1.5;
+}
+
+.about__content p {
+    color: var(--color-text-muted);
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+    .about__container { flex-direction: column; text-align: center; }
+}
+
+/* --- 4. PORTAFOLIO (CONTENEDORES Y BOTONES UNIFORMES) --- */
+.projects__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: stretch; 
+}
+
+.project-card {
+    background-color: var(--color-bg-card); 
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column; 
+}
+
+.project-card__preview {
+    width: 100%;
+    aspect-ratio: 16/9; 
+    background-color: var(--color-bg-card); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.project-card__img, .project-card__video { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: cover; 
+}
+
+.project-card__content { 
+    padding: 30px; 
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; 
+}
+
+.project-card__content h3 { font-size: 1.5rem; margin-bottom: 10px; }
+.project-card__content p { color: var(--color-text-muted); margin-bottom: 20px; }
+
+.project-card__tools {
+    font-size: 1.8rem;
+    color: var(--color-accent);
+    margin-bottom: 25px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.project-card__content .btn {
+    margin-top: auto; 
+}
+
+@media (max-width: 768px) {
+    .projects__grid { grid-template-columns: 1fr; }
+}
+
+/* --- 5. VALOR AGREGADO --- */
+.value__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.value-card {
+    background-color: var(--color-bg-card); 
+    padding: 35px 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+}
+
+.value-card i {
+    font-size: 2.8rem;
+    color: var(--color-accent);
+    margin-bottom: 20px;
+}
+
+.value-card h4 { font-size: 1.25rem; margin-bottom: 15px; }
+
+@media (max-width: 768px) {
+    .value__grid { grid-template-columns: 1fr; }
+}
+
+/* --- 6. FOOTER --- */
+.contact__title { font-size: 2.2rem; margin-bottom: 15px; }
+.contact__text { font-size: 1.15rem; margin-bottom: 30px; color: var(--color-text-muted); max-width: 700px; margin-left: auto; margin-right: auto; }
+.footer-bottom { margin-top: 40px; margin-bottom: 40px; font-weight: 600; }
+
+/* --- SISTEMA DE ANIMACIONES DE SCROLL --- */
+.animate-fade-up, .animate-slide-left, .animate-fade-in {
+    opacity: 0;
+    visibility: hidden;
+    will-change: transform, opacity;
+}
+
+.animate-fade-up { transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+.animate-slide-left { transform: translateX(-50px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
+.animate-fade-in { transform: scale(0.95); transition: opacity 1s ease-out, transform 1s ease-out; }
+.animate-fade-up.show, .animate-slide-left.show, .animate-fade-in.show { opacity: 1; visibility: visible; transform: translate(0, 0) scale(1) rotate(0deg); }
+.hero__avatar--left.show { transform: rotate(20deg); }
+.hero__avatar--right.show { transform: rotate(-20deg); }
+
+/* ==========================================================================
+   AGREGADOS EXCLUSIVOS PARA MULTIMEDIA (Cero verdes, márgenes corregidos)
+   ========================================================================== */
+
+/* Herramientas (3 arriba, 2 abajo) */
+.tools-grid-custom {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 550px; 
+    margin: 0 auto;
+}
+
+.tool-card-vino {
+    background-color: var(--color-accent); /* Tu vino tinto */
+    color: #ffffff;
+    padding: 25px 20px;
+    border-radius: 14px;
+    text-align: center;
+    width: 150px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.tool-card-vino:hover { transform: translateY(-5px); }
+.tool-card-vino i { font-size: 2.5rem; margin-bottom: 12px; display: block; }
+
+/* Para que la imagen de Figma se vea completa sin cortarse */
+.project-card__img-contain {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; 
+}
+
+/* Contenedores de Reels / TikTok (Formato Celular) */
+.reels-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 300px));
+    gap: 30px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.reel-card {
+    background-color: var(--color-bg-card); /* Rosa clarito */
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.reel-mockup {
+    width: 100%;
+    aspect-ratio: 9/16; /* Forzado a tamaño celular */
+    background: #000;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.reel-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.reel-content { padding: 15px 5px 5px 5px; text-align: center; }
+.reel-content h3 { font-size: 1.3rem; margin-bottom: 10px; color: var(--color-text-dark); }
+.reel-content p { color: var(--color-text-muted); font-size: 0.95rem; }
+
+/* Botón flotante WhatsApp - ESTRICTAMENTE VINO TINTO */
+.whatsapp-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--color-accent); /* Usa tu variable de color */
+    color: #ffffff;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.2rem;
+    box-shadow: 0 4px 15px rgba(147, 5, 0, 0.4);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    text-decoration: none;
+}
+
+.whatsapp-float:hover { transform: scale(1.1); }
+
+@media (max-width: 480px) {
+    .tool-card-vino { width: 45%; }
+}
+
+/* ==========================================================================
+   REFUERZO DE MÁRNENES Y CONTENEDORES (Evita que se peguen a los lados)
+   ========================================================================== */
+.container {
+    max-width: 1100px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+
+.projects__grid {
+    max-width: 1050px;
+    margin: 0 auto;
+}
+
+.reels-grid {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.contact-box {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding-left: 20px !important;
+        padding-right: 20px !important;
+    }
+}
